@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Umang's Grievance Portal 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('your-photo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 50px;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #99ccff;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: #3399ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #007acc;
+    }
+
+    #grievance-form {
+      display: none;
+    }
+
+    .note {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #444;
+    }
+
+    audio {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Player -->
+  <audio controls autoplay muted loop>
+    <source src="voice.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Login Form -->
+  <div class="container" id="login-form">
+    <h2>Umang's Grievance Portal 💌</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="checkLogin()">Login</button>
+    <p id="error" style="color: red; text-align: center; display: none;">Wrong username or password 😢</p>
+  </div>
+
+  <!-- Grievance Form -->
+  <div class="container" id="grievance-form">
+    <h2>Submit a Grievance 🌹💭</h2>
+    <input type="text" placeholder="Title" />
+    <textarea placeholder="What's bothering you?"></textarea>
+
+    <label>Mood:</label>
+    <select>
+      <option>😞</option>
+      <option>😠</option>
+      <option>😭</option>
+      <option>😐</option>
+    </select>
+
+    <label>Severity:</label>
+    <select>
+      <option>A hug would fix this 💙</option>
+      <option>Need gift now 🍫</option>
+      <option>This is serious 😤</option>
+      <option>Call me ASAP 📞</option>
+    </select>
+
+    <button onclick="alert('Thank you, Umang! 💙 Vandana will look into this right away!')">Submit 💌</button>
+
+    <div class="note" id="loveNote">You're the cutest and I love you so much baby 🐼</div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    const correctUsername = "vumanda";
+    const correctPassword = "082701";
+
+    function checkLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username === correctUsername && password === correctPassword) {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("grievance-form").style.display = "block";
+
+        // Random love note
+        const loveNotes = [
+          "You're the love of my life",
+          "You deserve all the hugs 💙",
+          "Even your grumpiness is adorable ❤️",
+          "Chocolate and cuddles incoming 🍫",
+          "I really wanna fuck you right now"
+        ];
+        document.getElementById("loveNote").innerText =
+          loveNotes[Math.floor(Math.random() * loveNotes.length)];
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
